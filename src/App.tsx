@@ -12,12 +12,12 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-      
+
         <main className="app">
           <Navigation />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/favourites" element={<Favorites />} />
             <Route path="/trash" element={<Trash />} />
             <Route path="*" element={<Navigate to="/" replace={true} />} />
           </Routes>

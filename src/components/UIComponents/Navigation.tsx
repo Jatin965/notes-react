@@ -33,7 +33,7 @@ function Navigation(): JSX.Element {
 
       <button
         onClick={() => {
-          switchPageHandler("favorites");
+          switchPageHandler("favourites");
         }}
         title="Favorites"
       >
