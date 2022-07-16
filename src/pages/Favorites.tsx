@@ -6,7 +6,7 @@ import HeartIcon from "../icons/HeartIcon";
 
 function Favorites(): JSX.Element {
   const notes = useSelector((state: RootState) => state.favouriteNotes);
-  const pageLabel = <b>Favorites</b>;
+  const pageLabel = <b>Favourites</b>;
   const notesUnavailableClass = "inline-description";
   const notesUnavailableInfo = "No favourite notes";
   const notesUnavailableIcon = <HeartIcon />;
