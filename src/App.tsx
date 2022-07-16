@@ -1,22 +1,29 @@
-import React from "react";
+import { Provider } from "react-redux";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import Footer from "./components/UIComponents/Footer";
+import Navigation from "./components/UIComponents/Navigation";
+import Favorites from "./pages/Favorites";
+import HomePage from "./pages/Home";
+import Trash from "./pages/Trash";
+import store from "./store/store";
+import "./styles/main.scss";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <main className="app">
+          <Navigation />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/trash" element={<Trash />} />
+            <Route path="*" element={<Navigate to="/" replace={true} />} />
+          </Routes>
+          <Footer />
+        </main>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

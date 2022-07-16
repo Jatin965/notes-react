@@ -1,11 +1,26 @@
-import React from "react";
+import { Fragment } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import BaseComponent from "../components/BaseComponent/BaseComponent";
+import NotesIcon from "../icons/NotesIcon";
 
-const Home = () => {
-  return (
-    <div>
-      <h1>Home Page</h1>
-    </div>
-  );
-};
+function HomePage(): JSX.Element {
+	const notes = useSelector((state: RootState) => state.userNotes);
+	const pageLabel = <span className="logo"><b>Notes</b><b>Mini</b></span>;
+	const notesUnavailableInfo = "Anything to add?";
+	const notesUnavailableIcon = <NotesIcon/>;
 
-export default Home;
+	return (
+		<Fragment>
+			<BaseComponent
+				notes={notes}
+				activePage="home"
+				pageLabel={pageLabel}
+				notesUnavailableInfo={notesUnavailableInfo}
+				notesUnavailableIcon={notesUnavailableIcon}
+			/>
+		</Fragment>
+	)
+}
+
+export default HomePage;

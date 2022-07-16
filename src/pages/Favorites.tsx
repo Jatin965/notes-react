@@ -1,11 +1,28 @@
-import React from "react";
+import { Fragment } from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import BaseComponent from "../components/BaseComponent/BaseComponent";
+import HeartIcon from "../icons/HeartIcon";
 
-const Favorites = () => {
+function Favorites(): JSX.Element {
+  const notes = useSelector((state: RootState) => state.favouriteNotes);
+  const pageLabel = <b>Favorites</b>;
+  const notesUnavailableClass = "inline-description";
+  const notesUnavailableInfo = "No favourite notes";
+  const notesUnavailableIcon = <HeartIcon />;
+
   return (
-    <div>
-      <h1>Favorites</h1>
-    </div>
+    <Fragment>
+      <BaseComponent
+        notes={notes}
+        activePage="favorites"
+        pageLabel={pageLabel}
+        notesUnavailableClass={notesUnavailableClass}
+        notesUnavailableInfo={notesUnavailableInfo}
+        notesUnavailableIcon={notesUnavailableIcon}
+      />
+    </Fragment>
   );
-};
+}
 
 export default Favorites;
