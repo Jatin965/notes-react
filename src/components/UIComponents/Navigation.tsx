@@ -6,34 +6,50 @@ import TrashIcon from "../../icons/TrashIcon";
 import "../../styles/navigation/navigation.scss";
 
 function Navigation(): JSX.Element {
-	const location = useLocation();
-	const navigate = useNavigate();
-	
-	const [activePageIndication, setActivePageIndication] = useState("focus-home");
-		
-	const switchPageHandler = (page: string) => {
-		navigate(`/${page}`);
-	}
+  const location = useLocation();
+  const navigate = useNavigate();
 
-	useEffect(() => {
-		setActivePageIndication(`focus-${location.pathname.slice(1)}`);
-	}, [location.pathname]);
+  const [activePageIndication, setActivePageIndication] =
+    useState("focus-home");
 
-	return (
-		<nav className={`navigation-buttons ${activePageIndication}`}>
-			<button onClick={() => {switchPageHandler("home")}} title="Home">
-				<HomeIcon />
-			</button>
+  const switchPageHandler = (page: string) => {
+    navigate(`/${page}`);
+  };
 
-			<button onClick={() => {switchPageHandler("favourites")}} title="Favourites">
-				<FavouriteIcon />
-			</button>
+  useEffect(() => {
+    setActivePageIndication(`focus-${location.pathname.slice(1)}`);
+  }, [location.pathname]);
 
-			<button onClick={() => {switchPageHandler("trash")}} title="Trash">
-				<TrashIcon />
-			</button>
-		</nav>
-	);
+  return (
+    <nav className={`navigation-buttons ${activePageIndication}`}>
+      <button
+        onClick={() => {
+          switchPageHandler("home");
+        }}
+        title="Home"
+      >
+        <HomeIcon />
+      </button>
+
+      <button
+        onClick={() => {
+          switchPageHandler("favorites");
+        }}
+        title="Favorites"
+      >
+        <FavouriteIcon />
+      </button>
+
+      <button
+        onClick={() => {
+          switchPageHandler("trash");
+        }}
+        title="Trash"
+      >
+        <TrashIcon />
+      </button>
+    </nav>
+  );
 }
 
 export default Navigation;
